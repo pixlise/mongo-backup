@@ -20,12 +20,6 @@ jobs:
       id-token: write
 
     steps:
-      - name: Setup Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: "1.24.5"
-      - name: Build mongo backup tool
-        run: make build-linux-mongo-backup && pwd && ls -al
       - name: Build and push mongo backup Docker image
         id: build-and-push-backup
         uses: docker/build-push-action@v4.0.0
