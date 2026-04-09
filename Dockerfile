@@ -3,7 +3,7 @@ FROM arm64v8/golang:1.24-alpine AS builder
 RUN apk add --no-cache build-base
 
 COPY . /build
-ENV CGO_ENABLED=1
+ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=arm64
 
