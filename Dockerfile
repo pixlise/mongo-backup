@@ -1,11 +1,11 @@
-FROM golang:1.24-alpine AS builder
+FROM arm64v8/golang:1.24-alpine AS builder
 
 RUN apk add --no-cache build-base
 
 COPY . /build
 ENV CGO_ENABLED=1
 ENV GOOS=linux
-ENV GOARCH=amd64
+ENV GOARCH=arm64
 
 RUN cd /build && go build -o ./mongo-backup .
 
