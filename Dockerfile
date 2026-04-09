@@ -5,11 +5,11 @@ RUN apk add --no-cache build-base
 COPY . /build
 ENV CGO_ENABLED=1
 ENV GOOS=linux
-ENV GOARCH=arm64
+ENV GOARCH=amd64
 
 RUN cd /build && go build -o ./mongo-backup .
 
-FROM arm64v8/alpine:latest
+FROM alpine:latest
 
 WORKDIR /root
 
