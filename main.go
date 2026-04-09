@@ -1,9 +1,9 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
+	"os"
 	"strconv"
 	"time"
 
@@ -20,60 +20,64 @@ import (
 // Provide command line arguments to control operation
 
 func main() {
-	var startupSecStr string
-	var intervalSecStr string
-	var mongoHost string
-	var mongoUsername string
-	var mongoPassword string
-	var backupBucket string
-	var backupS3Path string
-	var dbName string
+	// First backup will run this many seconds after starting this process
+	startupSecStr := os.Getenv("STARTUP_SEC")
 
-	flag.StringVar(&startupSecStr, "startup_sec", "60", "First backup will run this many seconds after starting this process")
-	flag.StringVar(&intervalSecStr, "interval_sec", "21600", "Backups will be run on this interval of seconds")
-	flag.StringVar(&mongoHost, "db_host", "localhost:27017", "Mongo DB host. Can specify multiple and require connection to a secondary")
-	flag.StringVar(&mongoUsername, "db_user", "", "Mongo DB Username")
-	flag.StringVar(&mongoPassword, "db_password", "", "Mongo DB Password")
-	flag.StringVar(&backupBucket, "backup_bucket", "", "S3 bucket to write backup to")
-	flag.StringVar(&backupS3Path, "backup_path", "", "S3 bucket path to write backup to")
-	flag.StringVar(&dbName, "backup_db", "", "Name of database to back up")
+	// Backups will be run on this interval of seconds
+	intervalSecStr := os.Getenv("INTERVAL_SEC")
 
-	flag.Parse()
+	// Mongo DB host. Can specify multiple and require connection to a secondary
+	mongoHost := os.Getenv("DB_HOST")
+
+	// Mongo DB Username
+	mongoUsername := os.Getenv("DB_USER")
+
+	// Mongo DB Password
+	mongoPassword := os.Getenv("DB_PASSWORD")
+
+	// S3 bucket to write backup to
+	backupBucket := os.Getenv("BACKUP_BUCKET")
+
+	// S3 bucket path to write backup to
+	backupS3Path := os.Getenv("BACKUP_PATH")
+
+	// Name of database to back up
+	dbName := os.Getenv("BACKUP_DB")
 
 	// Validate everything
 	startupSec, err := strconv.Atoi(startupSecStr)
 	if err != nil || startupSec <= 0 {
-		log.Fatalln("startup_sec must be a positive number")
+		log.Fatalln("STARTUP_SEC must be a positive number")
 		return
 	}
 
 	intervalSec, err := strconv.Atoi(intervalSecStr)
 	if err != nil || intervalSec < 0 {
-		log.Fatalln("interval_sec must be a positive number")
+		log.Fatalln("INTERVAL_SEC must be a positive number")
 		return
 	}
 
 	if intervalSec == 0 {
-		fmt.Printf("NOTE: interval_sec is set to 0, so backup will only run once and process will then exit")
+		fmt.Printf("NOTE: INTERVAL_SEC is set to 0, so backup will only run once and process will then exit")
 	}
 
 	if len(mongoHost) <= 0 {
-		log.Fatalln("db_host must not be empty")
+		log.Fatalln("DB_HOST must not be empty")
 		return
 	}
 
 	if len(backupBucket) <= 0 {
-		log.Fatalln("backup_bucket must be set to the name of the s3 bucket to write to")
+		log.Fatalln("BACKUP_BUCKET must be set to the name of the s3 bucket to write to")
 		return
 	}
 
 	if len(backupS3Path) <= 0 {
-		log.Fatalln("backup_path must be set to the path within the s3 bucket to write to")
+		log.Fatalln("BACKUP_PATH must be set to the path within the s3 bucket to write to")
 		return
 	}
 
 	if len(dbName) <= 0 {
-		log.Fatalln("backup_db must be set to the name of the db")
+		log.Fatalln("BACKUP_DB must be set to the name of the db")
 		return
 	}
 
