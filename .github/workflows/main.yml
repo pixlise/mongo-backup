@@ -40,5 +40,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: mongo-backup:latest
+          tags: ghcr.io/pixlise/mongo-backup:latest
           #labels: ${{ steps.meta.outputs.labels }}
