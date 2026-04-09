@@ -1,5 +1,7 @@
 FROM golang:1.24-alpine AS builder
 
+RUN apk add --no-cache libc6-compat
+
 COPY . /build
 ENV CGO_ENABLED=1
 ENV GOOS=linux
