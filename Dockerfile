@@ -9,7 +9,7 @@ ENV GOARCH=amd64
 
 RUN cd /build && go build -o ./mongo-backup .
 
-FROM arm64v8/alpine:latest
+FROM arm64v8/alpine:3.23
 
 WORKDIR /root
 
