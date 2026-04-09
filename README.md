@@ -1,0 +1,1 @@
+Simple command line tool that can do a mongodump, zip the files, and write them to S3. See source for arguments.
