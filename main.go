@@ -95,9 +95,9 @@ func main() {
 
 	svcs := &services.APIServices{
 		Log: &logger.StdOutLoggerForTest{},
-		MongoDetails: mongoDBConnection.MongoConnectionDetails{
+		MongoConnectInfo: mongoDBConnection.MongoConnectionInfo{
 			Host:     mongoHost,
-			User:     mongoUsername,
+			Username: mongoUsername,
 			Password: mongoPassword,
 		},
 		TimeStamper: &timestamper.UnixTimeNowStamper{},
