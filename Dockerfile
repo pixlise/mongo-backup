@@ -16,6 +16,7 @@ WORKDIR /root
 # Copy the Pre-built binary file from the previous stage
 COPY --from=builder /build/mongo-backup ./
 RUN chmod +x ./mongo-backup
+RUN mkdir ./backup
 
 RUN wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -O global-bundle.pem
 
