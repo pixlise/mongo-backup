@@ -28,6 +28,10 @@ github.com/pixlise/core/v4 v4.64.2 h1:7znafDfIgvKUvDBZwcNyWN/uBSOihMaskDLJJdpJzP
 github.com/pixlise/core/v4 v4.64.2/go.mod h1:iaI+9nUILw9O8cD5ZweZcGrrQo6FlJ3YE38Eff4JjQ4=
 github.com/pixlise/core/v4 v4.64.4 h1:0TEw8Xbgu/O1l5/Cb9wC2XnbyZUVxeQENP7YF+/k1ZY=
 github.com/pixlise/core/v4 v4.64.4/go.mod h1:iaI+9nUILw9O8cD5ZweZcGrrQo6FlJ3YE38Eff4JjQ4=
+github.com/pixlise/core/v4 v4.64.5 h1:iKTbG0jxS6qRieLnLS/i1tfWQHlsd6FchrqYUVNzmZY=
+github.com/pixlise/core/v4 v4.64.5/go.mod h1:iaI+9nUILw9O8cD5ZweZcGrrQo6FlJ3YE38Eff4JjQ4=
+github.com/pixlise/core/v4 v4.64.6 h1:Yz4owsPoiSfcXO5EsYtvmbGLPFsjG08Z1E8BHLQSkaY=
+github.com/pixlise/core/v4 v4.64.6/go.mod h1:iaI+9nUILw9O8cD5ZweZcGrrQo6FlJ3YE38Eff4JjQ4=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

@@ -93,10 +93,14 @@ func main() {
 
 	remoteFS := fileaccess.MakeS3Access(s3svc)
 
+	hostURI := mongoDBConnection.MakeMongoURI(mongoHost, "")
+
+	fmt.Printf("Mongo URI: %v\n", hostURI)
+
 	svcs := &services.APIServices{
 		Log: &logger.StdOutLoggerForTest{},
 		MongoConnectInfo: mongoDBConnection.MongoConnectionInfo{
-			Host:     mongoHost,
+			Host:     hostURI,
 			Username: mongoUsername,
 			Password: mongoPassword,
 		},
